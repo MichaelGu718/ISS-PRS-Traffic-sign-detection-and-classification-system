@@ -11,8 +11,9 @@ from utils.utils import get_classes
 #   annotation_mode为0代表整个标签处理过程，包括获得VOCdevkit/VOC2007/ImageSets里面的txt以及训练用的2007_train.txt、2007_val.txt
 #   annotation_mode为1代表获得VOCdevkit/VOC2007/ImageSets里面的txt
 #   annotation_mode为2代表获得训练用的2007_train.txt、2007_val.txt
+#   annotation_mode为3代表仅生成train.txt,val.txt,2007_train.txt、2007_val.txt
 #--------------------------------------------------------------------------------------------------------------------------------#
-annotation_mode     = 0
+annotation_mode     = 3
 #-------------------------------------------------------------------#
 #   必须要修改，用于生成2007_train.txt、2007_val.txt的目标信息
 #   与训练和预测所用的classes_path一致即可
@@ -20,14 +21,16 @@ annotation_mode     = 0
 #   那么就是因为classes没有设定正确
 #   仅在annotation_mode为0和2的时候有效
 #-------------------------------------------------------------------#
-classes_path        = './model_data/bdd_classes.txt'
+classes_path        = 'model_data/bdd_classes.txt'
 #--------------------------------------------------------------------------------------------------------------------------------#
 #   trainval_percent用于指定(训练集+验证集)与测试集的比例，默认情况下 (训练集+验证集):测试集 = 9:1
 #   train_percent用于指定(训练集+验证集)中训练集与验证集的比例，默认情况下 训练集:验证集 = 9:1
+#   len_trainval is the total line number of trianval.txt
 #   仅在annotation_mode为0和1的时候有效
 #--------------------------------------------------------------------------------------------------------------------------------#
-trainval_percent    = 0.5
+trainval_percent    = 0.9
 train_percent       = 0.9
+len_trainval        = 71867
 #-------------------------------------------------------#
 #   指向VOC数据集所在的文件夹
 #   默认指向根目录下的VOC数据集
@@ -66,6 +69,36 @@ if __name__ == "__main__":
     if " " in os.path.abspath(VOCdevkit_path):
         raise ValueError("数据集存放的文件夹路径与图片名称中不可以存在空格，否则会影响正常的模型训练，请注意修改。")
 
+    if annotation_mode == 3:
+        print("Generate txt in ImageSets. mode = 3")
+
+        saveBasePath = os.path.join(VOCdevkit_path, 'VOC2007/ImageSets/Main')
+        trainval = range(len_trainval)
+        tr      = int(len_trainval*train_percent)  #70000*(0.9) = 63000
+        train   = random.choices(trainval,k=tr) #[63000]
+
+        print("train and val size",len_trainval)
+        print("train size",tr)
+
+        ftrainval   = open(os.path.join(saveBasePath,'trainval.txt'), 'r')  
+        ftrain      = open(os.path.join(saveBasePath,'train.txt'), 'w')  
+        fval        = open(os.path.join(saveBasePath,'val.txt'), 'w')
+
+        for i in trainval:
+            name = ftrainval.readline()
+            if i in train:
+                for j in range(train.count(i)):
+                    ftrain.write(name)
+            else:  
+                fval.write(name) 
+        
+        ftrain.close()  
+        fval.close()
+        ftrainval.close()
+        print("Generate txt in ImageSets done.")  
+        
+
+
     if annotation_mode == 0 or annotation_mode == 1:
         print("Generate txt in ImageSets.")
         xmlfilepath     = os.path.join(VOCdevkit_path, 'VOC2007/Annotations')
@@ -76,12 +109,12 @@ if __name__ == "__main__":
             if xml.endswith(".xml"):
                 total_xml.append(xml)
 
-        num     = len(total_xml)  
-        list    = range(num)  
-        tv      = int(num*trainval_percent)  
-        tr      = int(tv*train_percent)  
-        trainval= random.sample(list,tv)  
-        train   = random.sample(trainval,tr)  
+        num     = len(total_xml)  #80000
+        list    = range(num)   #[0....80000]
+        tv      = int(num*trainval_percent) #80000*0.5 = 40000
+        tr      = int(tv*train_percent)  #40000*0.9 = 36000
+        trainval= random.sample(list,tv) #[40000]
+        train   = random.sample(trainval,tr) #[36000]
         
         print("train and val size",tv)
         print("train size",tr)
@@ -107,7 +140,7 @@ if __name__ == "__main__":
         ftest.close()
         print("Generate txt in ImageSets done.")
 
-    if annotation_mode == 0 or annotation_mode == 2:
+    if annotation_mode == 0 or annotation_mode == 2 or annotation_mode == 3:
         print("Generate 2007_train.txt and 2007_val.txt for train.")
         type_index = 0
         for year, image_set in VOCdevkit_sets:
