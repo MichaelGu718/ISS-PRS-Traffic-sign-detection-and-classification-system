@@ -25,9 +25,8 @@ class YOLO(object):
         #   验证集损失较低不代表mAP较高，仅代表该权值在验证集上泛化性能较好。
         #   如果出现shape不匹配，同时要注意训练时的model_path和classes_path参数的修改
         #--------------------------------------------------------------------------#
-        # "model_path2"       : './logs/best_epoch_weights.h5', 
         # "model_path"        : './logs\ep020-loss0.878-val_loss0.861.h5',
-        "model_paths"       : ['./log_ensemble/best_epoch_weights_3.h5','./log_ensemble/best_epoch_weights_2.h5'],
+        "model_paths"       : ['./log_ensemble/best_epoch_weights_3.h5','./log_ensemble/best_epoch_weights_2.h5','./log_ensemble/best_epoch_weights_1.h5'],
         "classes_path"      : './model_data/bdd_classes.txt',
         "yolo_models"       : [],
         #---------------------------------------------------------------------#
@@ -192,45 +191,7 @@ class YOLO(object):
         #   将图像输入网络当中进行预测！
         #---------------------------------------------------------#
         input_image_shape = np.expand_dims(np.array([image.size[1], image.size[0]], dtype='float32'), 0)
-        outs = self.get_pred(image_data, input_image_shape) 
-
-        out_boxes_sum = outs[0][0]
-        out_scores_sum = outs[0][1]
-        out_classes_sum = outs[0][2]
-        if len(outs) > 1:
-            out_boxes_sum = tf.cast(out_boxes_sum, tf.int32)
-
-            for i in range(1,len(outs)):
-                out_boxes = tf.cast(outs[i][0],tf.int32)
-                out_scores = outs[i][1]
-                out_classes = outs[i][2]
-
-                out_boxes_sum = tf.concat([out_boxes_sum,out_boxes],0)
-                out_scores_sum = tf.concat([out_scores_sum,out_scores],0)
-                out_classes_sum = tf.concat([out_classes_sum,out_classes],0)
-            
-            out_boxes_sum = tf.cast(out_boxes_sum, tf.float32)
-
-            print("NMS start")
-            nms_index = tf.image.non_max_suppression(out_boxes_sum, out_scores_sum, 100, iou_threshold=0.5)
-            print("nms_index",nms_index)
-            print("NMS finsh")
-
-            out_boxes_sum         = K.gather(out_boxes_sum, nms_index)
-            out_scores_sum    = K.gather(out_scores_sum, nms_index)
-            out_classes_sum = K.gather(out_classes_sum,nms_index)
-
-            print("out_boxes_sum after gather:")
-            print(out_boxes_sum)
-            print ("out_scores_sum after gather:")
-            print(out_scores_sum)
-            print("out_classes_sum after gather:")
-            print(out_classes_sum)
-
-        out_boxes = out_boxes_sum
-        out_scores = out_scores_sum
-        out_classes = out_classes_sum
-
+        out_boxes, out_scores, out_classes = self.ensemble_predict(image_data,input_image_shape)
 
         print('Found {} boxes for {}'.format(len(out_boxes), 'img'))
         #---------------------------------------------------------#
@@ -267,38 +228,6 @@ class YOLO(object):
                 crop_image = image.crop([left, top, right, bottom])
                 crop_image.save(os.path.join(dir_save_path, "crop_" + str(i) + ".png"), quality=95, subsampling=0)
                 print("save crop_" + str(i) + ".png to " + dir_save_path)
-
-        #---------------------------------------------------------#
-        # Generate JSON file
-        # --------------------------------------------------------#
-        # out = {
-        #     "name":image_name,
-        #     "labels": []
-        # }
-        # for i, c in list(enumerate(out_classes)):
-        #     predicted_class = self.class_names[int(c)]
-        #     box             = out_boxes[i]
-        #     score           = out_scores[i]
-        #     top, left, bottom, right = box
-
-        #     top     = max(0, np.floor(top).astype('int32'))
-        #     left    = max(0, np.floor(left).astype('int32'))
-        #     bottom  = min(image.size[1], np.floor(bottom).astype('int32'))
-        #     right   = min(image.size[0], np.floor(right).astype('int32'))
-
-        #     predict = {
-        #         "id": i,
-        #         "category":predicted_class,
-        #         "score":'{:.2f}'.format(score),
-        #         "box2d": {"x1":int(top), "y1":int(left), "x2":int(bottom), "y2":int(right)}
-        #     }
-        #     out['labels'].append(predict)
-        # out_out = {
-        #     "frames":[out]
-        # }
-        # json_out = json.dumps(out_out)
-        # with open("BDD100K\VOC2007\JSON_out/sample.json", "w") as outfile:
-        #     outfile.write(json_out)
 
         
         #---------------------------------------------------------#
@@ -429,7 +358,7 @@ class YOLO(object):
         #   将图像输入网络当中进行预测！
         #---------------------------------------------------------#
         input_image_shape = np.expand_dims(np.array([image.size[1], image.size[0]], dtype='float32'), 0)
-        out_boxes, out_scores, out_classes = self.get_pred(image_data, input_image_shape) 
+        out_boxes, out_scores, out_classes = self.ensemble_predict(image_data, input_image_shape) 
 
         for i, c in enumerate(out_classes):
             predicted_class             = self.class_names[int(c)]
@@ -445,3 +374,41 @@ class YOLO(object):
 
         f.close()
         return 
+    
+    def ensemble_predict(self,image_data,input_image_shape):
+        outs = self.get_pred(image_data, input_image_shape)
+
+        out_boxes_sum = outs[0][0]
+        out_scores_sum = outs[0][1]
+        out_classes_sum = outs[0][2]
+        if len(outs) > 1:
+            out_boxes_sum = tf.cast(out_boxes_sum, tf.int32)
+
+            for i in range(1,len(outs)):
+                out_boxes = tf.cast(outs[i][0],tf.int32)
+                out_scores = outs[i][1]
+                out_classes = outs[i][2]
+
+                out_boxes_sum = tf.concat([out_boxes_sum,out_boxes],0)
+                out_scores_sum = tf.concat([out_scores_sum,out_scores],0)
+                out_classes_sum = tf.concat([out_classes_sum,out_classes],0)
+            
+            out_boxes_sum = tf.cast(out_boxes_sum, tf.float32)
+
+            # print("NMS start")
+            nms_index = tf.image.non_max_suppression(out_boxes_sum, out_scores_sum, 100, iou_threshold=0.5)
+            # print("nms_index",nms_index)
+            # print("NMS finsh")
+
+            out_boxes_sum = K.gather(out_boxes_sum, nms_index)
+            out_scores_sum = K.gather(out_scores_sum, nms_index)
+            out_classes_sum = K.gather(out_classes_sum,nms_index)
+
+            # print("out_boxes_sum after gather:")
+            # print(out_boxes_sum)
+            # print ("out_scores_sum after gather:")
+            # print(out_scores_sum)
+            # print("out_classes_sum after gather:")
+            # print(out_classes_sum)
+
+        return out_boxes_sum, out_scores_sum, out_classes_sum
