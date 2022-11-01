@@ -1,0 +1,243 @@
+model_path is:
+./logs\ep026-loss0.627-val_loss0.598.h5
+./logs\ep026-loss0.627-val_loss0.598.h5 model, anchors, and classes loaded.
+class_boxes in utils:
+Tensor("yolo_eval/boolean_mask/GatherV2:0", shape=(None, 4), dtype=float32)
+class_box_score in utils
+Tensor("yolo_eval/boolean_mask_1/GatherV2:0", shape=(None,), dtype=float32)
+class_boxes in utils after gather:
+Tensor("yolo_eval/GatherV2:0", shape=(None, 4), dtype=float32)
+class_box_score in utils after gather
+Tensor("yolo_eval/GatherV2_1:0", shape=(None,), dtype=float32)
+classes in utils after gather
+Tensor("yolo_eval/mul_14:0", shape=(None,), dtype=int32)
+class_boxes in utils:
+Tensor("yolo_eval/boolean_mask_2/GatherV2:0", shape=(None, 4), dtype=float32)
+class_box_score in utils
+Tensor("yolo_eval/boolean_mask_3/GatherV2:0", shape=(None,), dtype=float32)
+class_boxes in utils after gather:
+Tensor("yolo_eval/GatherV2_2:0", shape=(None, 4), dtype=float32)
+class_box_score in utils after gather
+Tensor("yolo_eval/GatherV2_3:0", shape=(None,), dtype=float32)
+classes in utils after gather
+Tensor("yolo_eval/mul_15:0", shape=(None,), dtype=int32)
+class_boxes in utils:
+Tensor("yolo_eval/boolean_mask_4/GatherV2:0", shape=(None, 4), dtype=float32)
+class_box_score in utils
+Tensor("yolo_eval/boolean_mask_5/GatherV2:0", shape=(None,), dtype=float32)
+class_boxes in utils after gather:
+Tensor("yolo_eval/GatherV2_4:0", shape=(None, 4), dtype=float32)
+class_box_score in utils after gather
+Tensor("yolo_eval/GatherV2_5:0", shape=(None,), dtype=float32)
+classes in utils after gather
+Tensor("yolo_eval/mul_16:0", shape=(None,), dtype=int32)
+class_boxes in utils:
+Tensor("yolo_eval/boolean_mask_6/GatherV2:0", shape=(None, 4), dtype=float32)
+class_box_score in utils
+Tensor("yolo_eval/boolean_mask_7/GatherV2:0", shape=(None,), dtype=float32)
+class_boxes in utils after gather:
+Tensor("yolo_eval/GatherV2_6:0", shape=(None, 4), dtype=float32)
+class_box_score in utils after gather
+Tensor("yolo_eval/GatherV2_7:0", shape=(None,), dtype=float32)
+classes in utils after gather
+Tensor("yolo_eval/mul_17:0", shape=(None,), dtype=int32)
+class_boxes in utils:
+Tensor("yolo_eval/boolean_mask_8/GatherV2:0", shape=(None, 4), dtype=float32)
+class_box_score in utils
+Tensor("yolo_eval/boolean_mask_9/GatherV2:0", shape=(None,), dtype=float32)
+class_boxes in utils after gather:
+Tensor("yolo_eval/GatherV2_8:0", shape=(None, 4), dtype=float32)
+class_box_score in utils after gather
+Tensor("yolo_eval/GatherV2_9:0", shape=(None,), dtype=float32)
+classes in utils after gather
+Tensor("yolo_eval/mul_18:0", shape=(None,), dtype=int32)
+class_boxes in utils:
+Tensor("yolo_eval/boolean_mask_10/GatherV2:0", shape=(None, 4), dtype=float32)
+class_box_score in utils
+Tensor("yolo_eval/boolean_mask_11/GatherV2:0", shape=(None,), dtype=float32)
+class_boxes in utils after gather:
+Tensor("yolo_eval/GatherV2_10:0", shape=(None, 4), dtype=float32)
+class_box_score in utils after gather
+Tensor("yolo_eval/GatherV2_11:0", shape=(None,), dtype=float32)
+classes in utils after gather
+Tensor("yolo_eval/mul_19:0", shape=(None,), dtype=int32)
+class_boxes in utils:
+Tensor("yolo_eval/boolean_mask_12/GatherV2:0", shape=(None, 4), dtype=float32)
+class_box_score in utils
+Tensor("yolo_eval/boolean_mask_13/GatherV2:0", shape=(None,), dtype=float32)
+class_boxes in utils after gather:
+Tensor("yolo_eval/GatherV2_12:0", shape=(None, 4), dtype=float32)
+class_box_score in utils after gather
+Tensor("yolo_eval/GatherV2_13:0", shape=(None,), dtype=float32)
+classes in utils after gather
+Tensor("yolo_eval/mul_20:0", shape=(None,), dtype=int32)
+class_boxes in utils:
+Tensor("yolo_eval/boolean_mask_14/GatherV2:0", shape=(None, 4), dtype=float32)
+class_box_score in utils
+Tensor("yolo_eval/boolean_mask_15/GatherV2:0", shape=(None,), dtype=float32)
+class_boxes in utils after gather:
+Tensor("yolo_eval/GatherV2_14:0", shape=(None, 4), dtype=float32)
+class_box_score in utils after gather
+Tensor("yolo_eval/GatherV2_15:0", shape=(None,), dtype=float32)
+classes in utils after gather
+Tensor("yolo_eval/mul_21:0", shape=(None,), dtype=int32)
+class_boxes in utils:
+Tensor("yolo_eval/boolean_mask_16/GatherV2:0", shape=(None, 4), dtype=float32)
+class_box_score in utils
+Tensor("yolo_eval/boolean_mask_17/GatherV2:0", shape=(None,), dtype=float32)
+class_boxes in utils after gather:
+Tensor("yolo_eval/GatherV2_16:0", shape=(None, 4), dtype=float32)
+class_box_score in utils after gather
+Tensor("yolo_eval/GatherV2_17:0", shape=(None,), dtype=float32)
+classes in utils after gather
+Tensor("yolo_eval/mul_22:0", shape=(None,), dtype=int32)
+class_boxes in utils:
+Tensor("yolo_eval/boolean_mask_18/GatherV2:0", shape=(None, 4), dtype=float32)
+class_box_score in utils
+Tensor("yolo_eval/boolean_mask_19/GatherV2:0", shape=(None,), dtype=float32)
+class_boxes in utils after gather:
+Tensor("yolo_eval/GatherV2_18:0", shape=(None, 4), dtype=float32)
+class_box_score in utils after gather
+Tensor("yolo_eval/GatherV2_19:0", shape=(None,), dtype=float32)
+classes in utils after gather
+Tensor("yolo_eval/mul_23:0", shape=(None,), dtype=int32)
+boxes_out in utils after gather:
+Tensor("yolo_eval/concat_9:0", shape=(None, 4), dtype=float32)
+scores_out in utils after gather
+Tensor("yolo_eval/concat_10:0", shape=(None,), dtype=float32)
+classes_out in utils after gather
+Tensor("yolo_eval/concat_11:0", shape=(None,), dtype=int32)
+Configurations:
+----------------------------------------------------------------------
+|                     keys |                                   values|
+----------------------------------------------------------------------
+|             classes_path |             ./model_data/bdd_classes.txt|
+|             anchors_path |            ./model_data/yolo_anchors.txt|
+|             anchors_mask |        [[6, 7, 8], [3, 4, 5], [0, 1, 2]]|
+|              input_shape |                               [640, 640]|
+|                      phi |                                        s|
+|               confidence |                                      0.3|
+|                  nms_iou |                                      0.5|
+|                max_boxes |                                      100|
+|          letterbox_image |                                     True|
+----------------------------------------------------------------------
+Input image filename:class_boxes in utils:
+Tensor("model_1/yolo_eval/boolean_mask/GatherV2:0", shape=(None, 4), dtype=float32)
+class_box_score in utils
+Tensor("model_1/yolo_eval/boolean_mask_1/GatherV2:0", shape=(None,), dtype=float32)
+class_boxes in utils after gather:
+Tensor("model_1/yolo_eval/GatherV2:0", shape=(None, 4), dtype=float32)
+class_box_score in utils after gather
+Tensor("model_1/yolo_eval/GatherV2_1:0", shape=(None,), dtype=float32)
+classes in utils after gather
+Tensor("model_1/yolo_eval/mul_14:0", shape=(None,), dtype=int32)
+class_boxes in utils:
+Tensor("model_1/yolo_eval/boolean_mask_2/GatherV2:0", shape=(None, 4), dtype=float32)
+class_box_score in utils
+Tensor("model_1/yolo_eval/boolean_mask_3/GatherV2:0", shape=(None,), dtype=float32)
+class_boxes in utils after gather:
+Tensor("model_1/yolo_eval/GatherV2_2:0", shape=(None, 4), dtype=float32)
+class_box_score in utils after gather
+Tensor("model_1/yolo_eval/GatherV2_3:0", shape=(None,), dtype=float32)
+classes in utils after gather
+Tensor("model_1/yolo_eval/mul_15:0", shape=(None,), dtype=int32)
+class_boxes in utils:
+Tensor("model_1/yolo_eval/boolean_mask_4/GatherV2:0", shape=(None, 4), dtype=float32)
+class_box_score in utils
+Tensor("model_1/yolo_eval/boolean_mask_5/GatherV2:0", shape=(None,), dtype=float32)
+class_boxes in utils after gather:
+Tensor("model_1/yolo_eval/GatherV2_4:0", shape=(None, 4), dtype=float32)
+class_box_score in utils after gather
+Tensor("model_1/yolo_eval/GatherV2_5:0", shape=(None,), dtype=float32)
+classes in utils after gather
+Tensor("model_1/yolo_eval/mul_16:0", shape=(None,), dtype=int32)
+class_boxes in utils:
+Tensor("model_1/yolo_eval/boolean_mask_6/GatherV2:0", shape=(None, 4), dtype=float32)
+class_box_score in utils
+Tensor("model_1/yolo_eval/boolean_mask_7/GatherV2:0", shape=(None,), dtype=float32)
+class_boxes in utils after gather:
+Tensor("model_1/yolo_eval/GatherV2_6:0", shape=(None, 4), dtype=float32)
+class_box_score in utils after gather
+Tensor("model_1/yolo_eval/GatherV2_7:0", shape=(None,), dtype=float32)
+classes in utils after gather
+Tensor("model_1/yolo_eval/mul_17:0", shape=(None,), dtype=int32)
+class_boxes in utils:
+Tensor("model_1/yolo_eval/boolean_mask_8/GatherV2:0", shape=(None, 4), dtype=float32)
+class_box_score in utils
+Tensor("model_1/yolo_eval/boolean_mask_9/GatherV2:0", shape=(None,), dtype=float32)
+class_boxes in utils after gather:
+Tensor("model_1/yolo_eval/GatherV2_8:0", shape=(None, 4), dtype=float32)
+class_box_score in utils after gather
+Tensor("model_1/yolo_eval/GatherV2_9:0", shape=(None,), dtype=float32)
+classes in utils after gather
+Tensor("model_1/yolo_eval/mul_18:0", shape=(None,), dtype=int32)
+class_boxes in utils:
+Tensor("model_1/yolo_eval/boolean_mask_10/GatherV2:0", shape=(None, 4), dtype=float32)
+class_box_score in utils
+Tensor("model_1/yolo_eval/boolean_mask_11/GatherV2:0", shape=(None,), dtype=float32)
+class_boxes in utils after gather:
+Tensor("model_1/yolo_eval/GatherV2_10:0", shape=(None, 4), dtype=float32)
+class_box_score in utils after gather
+Tensor("model_1/yolo_eval/GatherV2_11:0", shape=(None,), dtype=float32)
+classes in utils after gather
+Tensor("model_1/yolo_eval/mul_19:0", shape=(None,), dtype=int32)
+class_boxes in utils:
+Tensor("model_1/yolo_eval/boolean_mask_12/GatherV2:0", shape=(None, 4), dtype=float32)
+class_box_score in utils
+Tensor("model_1/yolo_eval/boolean_mask_13/GatherV2:0", shape=(None,), dtype=float32)
+class_boxes in utils after gather:
+Tensor("model_1/yolo_eval/GatherV2_12:0", shape=(None, 4), dtype=float32)
+class_box_score in utils after gather
+Tensor("model_1/yolo_eval/GatherV2_13:0", shape=(None,), dtype=float32)
+classes in utils after gather
+Tensor("model_1/yolo_eval/mul_20:0", shape=(None,), dtype=int32)
+class_boxes in utils:
+Tensor("model_1/yolo_eval/boolean_mask_14/GatherV2:0", shape=(None, 4), dtype=float32)
+class_box_score in utils
+Tensor("model_1/yolo_eval/boolean_mask_15/GatherV2:0", shape=(None,), dtype=float32)
+class_boxes in utils after gather:
+Tensor("model_1/yolo_eval/GatherV2_14:0", shape=(None, 4), dtype=float32)
+class_box_score in utils after gather
+Tensor("model_1/yolo_eval/GatherV2_15:0", shape=(None,), dtype=float32)
+classes in utils after gather
+Tensor("model_1/yolo_eval/mul_21:0", shape=(None,), dtype=int32)
+class_boxes in utils:
+Tensor("model_1/yolo_eval/boolean_mask_16/GatherV2:0", shape=(None, 4), dtype=float32)
+class_box_score in utils
+Tensor("model_1/yolo_eval/boolean_mask_17/GatherV2:0", shape=(None,), dtype=float32)
+class_boxes in utils after gather:
+Tensor("model_1/yolo_eval/GatherV2_16:0", shape=(None, 4), dtype=float32)
+class_box_score in utils after gather
+Tensor("model_1/yolo_eval/GatherV2_17:0", shape=(None,), dtype=float32)
+classes in utils after gather
+Tensor("model_1/yolo_eval/mul_22:0", shape=(None,), dtype=int32)
+class_boxes in utils:
+Tensor("model_1/yolo_eval/boolean_mask_18/GatherV2:0", shape=(None, 4), dtype=float32)
+class_box_score in utils
+Tensor("model_1/yolo_eval/boolean_mask_19/GatherV2:0", shape=(None,), dtype=float32)
+class_boxes in utils after gather:
+Tensor("model_1/yolo_eval/GatherV2_18:0", shape=(None, 4), dtype=float32)
+class_box_score in utils after gather
+Tensor("model_1/yolo_eval/GatherV2_19:0", shape=(None,), dtype=float32)
+classes in utils after gather
+Tensor("model_1/yolo_eval/mul_23:0", shape=(None,), dtype=int32)
+boxes_out in utils after gather:
+Tensor("model_1/yolo_eval/concat_9:0", shape=(None, 4), dtype=float32)
+scores_out in utils after gather
+Tensor("model_1/yolo_eval/concat_10:0", shape=(None,), dtype=float32)
+classes_out in utils after gather
+Tensor("model_1/yolo_eval/concat_11:0", shape=(None,), dtype=int32)
+out_boxes:
+tf.Tensor(
+[[406.6925    364.4852    503.5477    507.94598  ]
+ [388.3632      0.7158756 511.093     185.40439  ]
+ [415.83414   169.33113   507.15628   332.78296  ]
+ [390.34106   263.29196   457.83093   352.6561   ]
+ [397.3438    342.03778   448.25986   385.4143   ]
+ [396.28638   361.5601    441.83038   404.3056   ]], shape=(6, 4), dtype=float32)
+out_score
+tf.Tensor([0.9269501 0.9183182 0.8762511 0.8235703 0.6723699 0.6059045], shape=(6,), dtype=float32)
+out_classes
+tf.Tensor([2 2 2 2 2 2], shape=(6,), dtype=int32)
+Found 6 boxes for img
+Input image filename:
